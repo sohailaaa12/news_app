@@ -4,44 +4,32 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.news_app.ui.theme.News_appTheme
+import androidx.compose.material3.MaterialTheme
+import com.example.news_app.ui.detail.ArticleDetailScreen
+import com.newsapp.data.model.Article
+import com.newsapp.data.model.Source
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         setContent {
-            News_appTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+            MaterialTheme {
+                ArticleDetailScreen(
+                    article = Article(
+                        title = "Breaking: OpenAI Announces GPT-5 with Revolutionary Capabilities",
+                        description = "The new model shows unprecedented reasoning abilities...",
+                        content = "This is the full article content. It can be quite long and will be displayed nicely with proper line spacing. You can read all the details here about the latest developments in artificial intelligence.",
+                        url = "https://jamesclear.com/getting-simple",
+                        urlToImage = "https://picsum.photos/id/1015/800/600",  //random image
+                        publishedAt = "2025-05-08T14:30:00Z",
+                        source = Source(id = null, name = "TechCrunch"),
+                        author = "Sarah Chen"
+                    ),
+                    onBackClick = {  }
+                )
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    News_appTheme {
-        Greeting("Android")
     }
 }
