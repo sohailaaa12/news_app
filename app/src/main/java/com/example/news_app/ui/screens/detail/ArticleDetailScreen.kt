@@ -1,5 +1,4 @@
-// ArticleDetailScreen.kt
-package com.example.news_app.ui.detail
+package com.example.news_app.ui.screens.detail
 
 import androidx.compose.material3.HorizontalDivider
 import android.content.Intent
